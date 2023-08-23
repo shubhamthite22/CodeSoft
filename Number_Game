@@ -1,0 +1,50 @@
+import java.util.Locale;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.*;
+public class Number_Game {
+    public static void main(String[] args){
+        int counter,attempts=1 ,value=0;
+        String ans ;
+        boolean b =false;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("____Rules for Playing Game____");
+        System.out.println("There are 3 attempts for a Player. Each attempt contain 8 chance to guess the Number.");
+        if (value<3){
+            for(int j=1;j<=3;j++){
+                if(b==false){
+                    counter =1;
+                    Random com=new Random();
+                    int computer_no=com.nextInt(100);
+                    do{for(int i=1;i<=8;i++){
+                        System.out.println("Enter Your number Between 1 to 100:");
+                        int user_no =sc.nextInt();
+                        if(user_no ==computer_no){
+                            System.out.println("Yes you guessed it right!!!!!");
+                            System.out.println("You guessed in "+counter+" try correct number in "+attempts+" attempt.");
+                            break;
+                        } else if (user_no>computer_no) {
+                            System.out.println("The Number is High!!");
+                            counter++;
+                        } else if (user_no<computer_no) {
+                            System.out.println("The number is low!!");
+                            counter++;
+                        }else {
+                            System.out.println("Can't Guess!!");
+                        }
+                    }attempts++;
+                        System.out.println("Do you want to play again = yes OR no");
+                        ans= sc.next().toLowerCase(Locale.ROOT);
+                    }while (ans=="yes");
+                    if(!ans.equals("yes")){
+                        b=true;
+                        System.out.println("You Lost!! Better Luck next time.");
+                        System.out.println("Thank you!");
+                    }
+                }value++;
+            }if (attempts>3)
+                System.out.println("Sorry !!,Attempts over! \nThank you for playing!!");
+
+        }
+    }
+}
